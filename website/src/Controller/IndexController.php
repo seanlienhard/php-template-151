@@ -1,18 +1,18 @@
 <?php
 
-namespace ihrname\Controller;
+namespace slienhard\Controller;
 
-use ihrname\SimpleTemplateEngine;
+use slienhard\SimpleTemplateEngine;
 
 class IndexController 
 {
   /**
-   * @var ihrname\SimpleTemplateEngine Template engines to render output
+   * @var slienhard\SimpleTemplateEngine Template engines to render output
    */
   private $template;
   
   /**
-   * @param ihrname\SimpleTemplateEngine
+   * @param slienhard\SimpleTemplateEngine
    */
   public function __construct(SimpleTemplateEngine $template)
   {
