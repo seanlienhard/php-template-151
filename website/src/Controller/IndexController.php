@@ -1,29 +1,59 @@
 <?php
 
-namespace slienhard\Controller;
+namespace seanlienhard\Controller;
+use LucStr\Controller\BaseController;
 
-use slienhard\SimpleTemplateEngine;
+use LucStr\MessageHandler;
 
-class IndexController 
+class IndexController extends BaseController
 {
-  /**
-   * @var slienhard\SimpleTemplateEngine Template engines to render output
-   */
-  private $template;
+  public function Index($categoryId = 0)
+  {  	
+  	if(!isset($_SESSION["userId"])){
+  		MessageHandler::info("Bitte logge dich zuerst ein!");
+  		return $this->redirectToAction("Login", "Index");
+  	}
+  	$categoryService = $this->factory->getCategoryService();
+  	$categories = $categoryService->getCategoriesByUserId($_SESSION["userId"]);
+  	$videoService = $this->factory->getVideoService();
+  	$videos = array();
+  	if($categoryId != 0){
+  		$videoService = $this->factory->getVideoService();
+  		$videos = $videoService->getVideosByCategoryId($categoryId);
+  		echo $categoryId;
+  	}  	
+  	return $this->view([
+  			"categoryId" => $categoryId,
+  			"categories" => $categories,
+  			"videos" => $videos
+  	]);
+  }
   
-  /**
-   * @param slienhard\SimpleTemplateEngine
-   */
-  public function __construct(SimpleTemplateEngine $template)
-  {
-     $this->template = $template;
+  public function AddCategory($name){
+  	if(!isset($_SESSION["userId"])){
+  		MessageHandler::info("Bitte logge dich zuerst ein!");
+  		return $this->redirectToAction("Login", "Index");
+  	}
+  	$categoryService = $this->factory->getCategoryService();
+  	$categoryService->addCategory($name, $_SESSION["userId"]);
+  	$this->redirectToAction("Index", "Index");  	
   }
-
-  public function homepage() {
-    echo "INDEX";
-  }
-
-  public function greet($name) {
-  	echo $this->template->render("hello.html.php", ["name" => $name]);
+  public function AddVideo($categoryId, $link){
+  	if(!isset($_SESSION["userId"])){
+  		MessageHandler::info("Bitte logge dich zuerst ein!");
+  		return $this->redirectToAction("Login", "Index");
+  	}
+  	if(!isset($categoryId) || $categoryId == 0){
+  		MessageHandler::info("KategoryId ist ungültig");
+  		return $this->redirectToAction("Index", "Index");
+  	}
+  	if(strpos($link, 'youtube.com') === false){
+  		MessageHandler::info("Link muss von Youtube kommen");
+  		return $this->redirectToAction("Index", "Index");
+  	}
+  	$newlink = str_replace("watch?v=", "embed/", $link);
+  	$videoService = $this->factory->getVideoService();
+  	$videoService->addVideo($newlink, $categoryId, $_SESSION["userId"]);
+  	$this->redirectToAction("Index", "Index");
   }
 }

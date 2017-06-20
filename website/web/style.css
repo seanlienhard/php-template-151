@@ -1,0 +1,130 @@
+﻿html,body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: sans-serif;
+}
+
+#kategorieDiv {
+    border-right: black 3px solid;
+    float: left;
+    width: 15%;
+    height: 100%;
+}
+
+#mainDiv {
+    float: left;
+    width: 84%;
+    height: 100%;
+}
+
+.playerDiv {
+    float: left;
+    margin: 15px;
+}
+
+#toolsDiv {
+    height: 100%;
+    width: 100px;
+    float: left;
+    text-align: center;
+}
+
+.kategoriePunkte {
+    margin: 10px auto 10px auto;
+    border: 2px solid black;
+    width: 150px;
+    text-align: center;
+    display: block;
+    height: 20px;
+    color: black;
+    font-weight: bold;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.kategoriePunkte:hover {
+    cursor: pointer;
+    background-color: grey;
+}
+
+.formular {
+    margin: auto;
+    margin-top: 70px;
+    width: 300px;
+}
+
+#displayPlayersDiv {
+    height: 100%;
+    width: 100%;
+}
+
+.inputTextbox {
+    width: 100%;
+    height: 30px;
+    margin: 5px;
+    border: 1px solid gray;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.inputTextbox:focus {
+    border: 1px solid lightblue;
+}
+
+.formLabel {
+    height: 20px;
+    margin: 5px;
+    font-weight: bold;
+}
+
+.formSubmit {
+    height: 30px;
+    width: 150px;
+    margin: 5px;
+    background-color: black;
+    border: 1px solid black;
+    color: white;
+    font-weight: bold;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.formSubmit:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#addKategorieDiv {
+    width: 250px;
+    margin-left: 15px;
+}
+
+.actionLink {
+    color: black;
+}
+
+#addKategoriePlusButton {
+    float: right;
+    margin-top: 5px;
+}
+
+#addKategoriePlusButton:hover {
+    cursor: pointer;
+}
+
+#addVideoPlusButton:hover {
+    cursor: pointer;
+}
+
+#modalWindow {
+    display: none;
+    width: 376px;
+    height: 95px;
+    background-color: white;
+    border: 2px solid black;
+    padding: 10px;
+    float: left;
+    margin: 15px;
+}

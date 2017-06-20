@@ -1,26 +1,29 @@
 <?php
+use seanlienhard\Factory;
 
 error_reporting(E_ALL);
+session_start();
 
-require_once("../vendor/autoload.php");
-$tmpl = new slienhard\SimpleTemplateEngine(__DIR__ . "/../templates/");
+$loader = require_once("../vendor/autoload.php");
+$loader->addPsr4('seanlienhard\\', "/var/www/php/vendor/composer/../../src");
+LucStr\MessageHandler::Initialize();
+$factory = Factory::crateFromInitFile(__DIR__ . "/../config.ini");
 
-switch($_SERVER["REQUEST_URI"]) {
-	case "/":
-		(new ihrname\Controller\IndexController($tmpl))->homepage();
-		break;
-	case "/testroute":
-		echo "test";
-		break;
-	case "/login":
-		(new slienhard\Controller\LoginController($tmpl))-> showLogin();
-		break;
-	default:
-		$matches = [];
-		if(preg_match("|^/hello/(.+)$|", $_SERVER["REQUEST_URI"], $matches)) {
-			(new slienhard\Controller\IndexController($tmpl))->greet($matches[1]);
-			break;
-		}
-		echo "Not Found";
+$uri_parts = strtok($_SERVER["REQUEST_URI"],'?');
+$controllername = strtok($uri_parts,'/');
+$actionname = strtok('/');
+if(empty($controllername)){
+	$controllername = "Index";
+	$actionname = "Index";
+}
+if(empty($actionname)){
+	$actionname = "Index";
 }
 
+$GLOBALS["controllername"] = $controllername;
+$GLOBALS["actionname"] = $actionname;
+
+$controllerlocation = "seanlienhard\\Controller\\" . $controllername . "Controller";
+$controller = new $controllerlocation($factory);
+
+$controller->executeAction($actionname);
