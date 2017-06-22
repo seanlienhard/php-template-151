@@ -6,13 +6,14 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- Jquery Ende-->
 <!-- CSS -->
-<style rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
 <?php 
 include "style.css";
 ?>
 </style>
 <!-- CSS Ende-->
-<title>Tim Blog</title>
+<title>Youtube</title>
 </head>
 <body>
     <div id="middle">

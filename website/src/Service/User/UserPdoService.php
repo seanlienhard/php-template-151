@@ -52,7 +52,7 @@ class UserPdoService implements UserService
 	
 	public function updatePassword($userId, $newPassword){
 		$stmt = $this->pdo->prepare("UPDATE user SET password=? WHERE userId=?");
-		$stmt->bindValue(1, password_hash($password, PASSWORD_DEFAULT));
+		$stmt->bindValue(1, password_hash($newPassword, PASSWORD_DEFAULT));
 		$stmt->bindValue(2, $userId);
 		$stmt->execute();
 		return $stmt->rowCount();
