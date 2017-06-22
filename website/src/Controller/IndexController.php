@@ -20,7 +20,6 @@ class IndexController extends BaseController
   	if($categoryId != 0){
   		$videoService = $this->factory->getVideoService();
   		$videos = $videoService->getVideosByCategoryId($categoryId);
-  		echo $categoryId;
   	}
   	return $this->view([
   			"categoryId" => $categoryId,

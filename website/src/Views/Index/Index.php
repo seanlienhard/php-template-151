@@ -3,11 +3,9 @@
 <?php
 foreach ($categories as $category){
 ?>
-
     <a href="/Index/Index?categoryId=<?= $category["categoryId"]?>" class="kategoriePunkte">
       <?= $category["name"]?>
     </a>
-
 <?php
 }
 ?>
@@ -37,16 +35,11 @@ foreach ($categories as $category){
 ?>
 <form method="post" action="/Index/AddVideo">
 	<input id="videoLinkTextBox" name="link" type="text" class="inputTextbox" placeholder="www.youtube.com/example" />
-            <input type="hidden" name="categoryId" value="<?= $categoryId?>">
+        <input type="hidden" style="display: none;" name="categoryId" value="<?= $categoryId?>">
         <input type="submit" class="formSubmit" id="addVideo" value="Add Video"/>
 </form>
 <?php
 	}
 ?>
-
 </div>
 </div>
-<script>
-
-
-</script>
