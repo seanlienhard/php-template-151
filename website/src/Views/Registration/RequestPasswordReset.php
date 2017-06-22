@@ -1,7 +1,7 @@
 <h1>Passwort Vergessen</h1>
-<form action="/Registration/RequestPasswordResetEmail" method="POST">
+<form class="formular" action="/Registration/RequestPasswordResetEmail" method="POST">
 	<?= $html->renderCSRF() ?>
-	<label>Username:</label>
-	<input type="text" name="username"/><br>
-	<input value="Login" type="submit" />
+	<label class="formLabel">Username:</label>
+	<input class="inputTextbox" type="text" name="username"/><br>
+	<input class="formSubmit" value="Reset Password!" type="submit" />
 </form>

@@ -8,7 +8,7 @@ use LucStr\MessageHandler;
 class IndexController extends BaseController
 {
   public function Index($categoryId = 0)
-  {  	
+  {
   	if(!isset($_SESSION["userId"])){
   		MessageHandler::info("Bitte logge dich zuerst ein!");
   		return $this->redirectToAction("Login", "Index");
@@ -21,22 +21,24 @@ class IndexController extends BaseController
   		$videoService = $this->factory->getVideoService();
   		$videos = $videoService->getVideosByCategoryId($categoryId);
   		echo $categoryId;
-  	}  	
+  	}
   	return $this->view([
   			"categoryId" => $categoryId,
   			"categories" => $categories,
   			"videos" => $videos
   	]);
   }
-  
+
   public function AddCategory($name){
   	if(!isset($_SESSION["userId"])){
   		MessageHandler::info("Bitte logge dich zuerst ein!");
   		return $this->redirectToAction("Login", "Index");
   	}
-  	$categoryService = $this->factory->getCategoryService();
-  	$categoryService->addCategory($name, $_SESSION["userId"]);
-  	$this->redirectToAction("Index", "Index");  	
+    if ($name != "") {
+      $categoryService = $this->factory->getCategoryService();
+      $categoryService->addCategory($name, $_SESSION["userId"]);
+    }
+    $this->redirectToAction("Index", "Index");
   }
   public function AddVideo($categoryId, $link){
   	if(!isset($_SESSION["userId"])){

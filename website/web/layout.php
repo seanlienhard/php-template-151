@@ -8,7 +8,7 @@
 <!-- CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style>
-<?php 
+<?php
 include "style.css";
 ?>
 </style>
@@ -16,23 +16,20 @@ include "style.css";
 <title>Youtube</title>
 </head>
 <body>
-    <div id="middle">
-	    <div id="navigation">
-			<a href="/">Startseite</a>
-		</div>
-		<?php 
+		<?php
 			LucStr\MessageHandler::renderMessages();
 		?>
         <div id="maincontent">
         	<?php include $view ?>
         </div>
-        <?php if(isset($_SESSION['username'])) { ?>
-            <a id="logoutButton" href="/Login/Logout">AUSLOGGEN</a>
-        <?php } else{
-        	?>
-        	<a href="/Login/">Einloggen</a>
-        	<?php 
-        }?>
-    </div>
+        <div id="loginlogoutButton">
+          <?php if(isset($_SESSION['username'])) { ?>
+              <a class="actionLink" href="/Login/Logout">Ausloggen</a>
+          <?php } else {
+          	?>
+          	 <a class="actionLink" href="/Login/">Einloggen</a>
+          	<?php
+          }?>
+        </div>
 </body>
 </html>

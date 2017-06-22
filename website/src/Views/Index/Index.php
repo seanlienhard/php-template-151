@@ -1,22 +1,21 @@
 <h1>YT</h1>
 <div id="kategorieDiv">
-<?php 
+<?php
 foreach ($categories as $category){
 ?>
 
     <a href="/Index/Index?categoryId=<?= $category["categoryId"]?>" class="kategoriePunkte">
-        <?= $category["name"]?>
+      <?= $category["name"]?>
     </a>
 
-<?php 
+<?php
 }
 ?>
 <form method="post" action="/Index/AddCategory">
-	<input placeholder="new Category" type="text" name="name" />
-	<input type="submit" value="Kategory Hinzufügen" />
+	<center><input class="inputTextbox" style="width: 200px;" placeholder="new Category" type="text" name="name" /></center>
+	<center><input type="submit" value="Kategory Hinzufügen" class="formSubmit" /></center>
 </form>
 
-<center><button type="button" class="formSubmit" id="addKategorie">Add Category</button></center>
 </div>
 <div id="mainDiv">
 	<div id="toolsDiv">
@@ -26,13 +25,13 @@ foreach ($categories as $category){
 </div>
 
 <div id="displayPlayersDiv">
-<?php 
+<?php
 	foreach ($videos as $video){
 		?>
 			<div class="playerDiv">
 	            <iframe src="<?= $video["link"]?>" width="400" height="250" frameborder="0" allowfullscreen></iframe>
 	        </div>
-		<?php 	
+		<?php
 	}
 	if($categoryId !== 0){
 ?>
@@ -40,15 +39,14 @@ foreach ($categories as $category){
 	<input id="videoLinkTextBox" name="link" type="text" class="inputTextbox" placeholder="www.youtube.com/example" />
             <input type="hidden" name="categoryId" value="<?= $categoryId?>">
         <input type="submit" class="formSubmit" id="addVideo" value="Add Video"/>
-
 </form>
-<?php 
+<?php
 	}
 ?>
-	
+
 </div>
 </div>
 <script>
 
-    
+
 </script>

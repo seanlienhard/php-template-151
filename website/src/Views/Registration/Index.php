@@ -2,13 +2,13 @@
 <div class="formular">
 	<form action="/Registration/Register" method="POST">
 		<?= $html->renderCSRF() ?>
-		<label>Email:</label>
-		<input id="email" type="text" name="email" value="<?= (isset($email)) ? $email : "" ?>"/>
-		<label>Username:</label>
-		<input id="username" type="text" name="username" value="<?= (isset($username)) ? $username : "" ?>"/>
+		<label class="formLabel">Email:</label>
+		<input class="inputTextbox" id="email" type="text" name="email" value="<?= (isset($email)) ? $email : "" ?>"/>
+		<label class="formLabel">Username:</label>
+		<input class="inputTextbox" id="username" type="text" name="username" value="<?= (isset($username)) ? $username : "" ?>"/>
 		<p style="display: none;color: red;" id="usernametaken">Dieser Benutzername wird bereits benutzt</p>
-		<label>Passoword:</label>
-		<input type="password" name="password" />
+		<label class="formLabel">Password:</label>
+		<input class="inputTextbox" type="password" name="password" />
         <input type="submit" value="Register" class="formSubmit" />
 	</form>
 </div>
